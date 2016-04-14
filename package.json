@@ -3,7 +3,9 @@
   "version": "1.0.1",
   "description": "Userland streams implementation",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "inherits": "^2.0.1"
+  },
   "devDependencies": {
     "standard": "^6.0.8",
     "tape": "^4.5.1"
