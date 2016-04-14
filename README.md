@@ -176,6 +176,31 @@ var ws = stream.Writable({
 })
 ```
 
+#### `Writable.end([data])`
+
+Ends the stream. Optionally you can a data value that is written before the stream is ended.
+
+#### `Writable._end(callback)`
+
+The `._end` method is called when the stream is about to end. Override this method if you want to do some custom logic before the stream emits finish.
+
+``` js
+ws._end = function (cb) {
+  console.log('stream is about to end')
+  cb()
+}
+```
+
+You can also pass the end function as an option in the constructor
+
+``` js
+var ws = streams.Writable({
+  end: function (cb) {
+    ...
+  }
+})
+```
+
 #### `Writable.destroy([error])`
 
 Destroys the writable stream. No more data will be written. If an error is passed an error will be emitted as well.
