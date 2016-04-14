@@ -6,6 +6,8 @@ A userland streams implementation that mostly mimicks node core streams but adds
 npm install vintage-streams
 ```
 
+[![build status](http://img.shields.io/travis/mafintosh/vintage-streams.svg?style=flat)](http://travis-ci.org/mafintosh/vintage-streams)
+
 ## Usage
 
 ``` js
