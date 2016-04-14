@@ -139,6 +139,7 @@ function duplex (From, isWritable) {
     var data = state.buffer.shift() || null
     if (data) this.emit('data', data)
     read(this, state)
+    emitEndMaybe(this, state)
     return data
   }
 
