@@ -1,6 +1,6 @@
 {
   "name": "vintage-streams",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Userland streams implementation",
   "main": "index.js",
   "dependencies": {},
