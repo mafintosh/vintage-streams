@@ -1,0 +1,23 @@
+{
+  "name": "vintage-streams",
+  "version": "0.0.0",
+  "description": "Userland streams implementation",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "tape": "^4.5.1"
+  },
+  "scripts": {
+    "test": "standard && tape test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mafintosh/vintage-streams.git"
+  },
+  "author": "Mathias Buus (@mafintosh)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mafintosh/vintage-streams/issues"
+  },
+  "homepage": "https://github.com/mafintosh/vintage-streams"
+}
