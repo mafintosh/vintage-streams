@@ -107,7 +107,7 @@ var rs = stream.Readable({
 })
 ```
 
-#### `writableStream = Readable.pipe(writableStream, [callback])
+#### `writableStream = Readable.pipe(writableStream, [callback])`
 
 Pipe the stream to a writable stream. Compatible with node core streams. When the pipe is finished (the writable stream has gracefully ended) the callback is called. If the pipe failed the callback is called with an error. If either the writable stream or the readable stream is destroyed or experiences an error both streams in the pipeline are destroyed.
 
