@@ -213,7 +213,7 @@ Similar to `_destroy` on a readable stream. Use this to deallocate any resources
 
 Pauses the writable stream. No data will be written and no events will emitted while the stream is corked unless it is destroyed.
 
-#### `Writable.cork()`
+#### `Writable.uncork()`
 
 Unpauses the writable stream.
 
@@ -245,7 +245,7 @@ A transform stream is a special duplex stream that transforms the data written t
 
 To make a transform stream use the base class provided by `streams.Transform`.
 
-#### `Transform._transform(data, callback)
+#### `Transform._transform(data, callback)`
 
 This method is called when there is a piece of data that you should transform.
 
