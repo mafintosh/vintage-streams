@@ -1,5 +1,6 @@
 var events = require('events')
 var inherits = require('inherits')
+var bufferFrom = require('buffer-from')
 
 module.exports = duplex(events.EventEmitter, false)
 
@@ -87,7 +88,7 @@ function duplex (From, isWritable) {
     var state = this._readableState
     if (state.destroyed) return false
     if (data === null) return end(this, state)
-    return push(this, state, !state.toBuffer && typeof data === 'string' ? Buffer(data) : data)
+    return push(this, state, !state.toBuffer && typeof data === 'string' ? bufferFrom(data) : data)
   }
 
   Readable.prototype.pause = function () {

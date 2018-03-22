@@ -15,8 +15,8 @@ var streams = require('vintage-streams')
 
 var rs = streams.Readable({
   read: function (cb) {
-    this.push(Buffer('hello'))
-    this.push(Buffer('world'))
+    this.push(Buffer.from('hello'))
+    this.push(Buffer.from('world'))
     this.push(null)
     cb()
   }
@@ -66,7 +66,7 @@ var rs = stream.Readable()
 var cnt = 0
 
 rs._read = function (cb) {
-  cb(null, Buffer('' + (cnt++)))
+  cb(null, Buffer.from('' + (cnt++)))
 }
 
 rs.on('data', function (data) {
@@ -251,7 +251,7 @@ This method is called when there is a piece of data that you should transform.
 
 ``` js
 ts._transform = function (data, cb) {
-  this.push(Buffer(data.toString().toUpperCase())) // uppercase the string
+  this.push(Buffer.from(data.toString().toUpperCase())) // uppercase the string
   cb()
 }
 ```

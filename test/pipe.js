@@ -1,17 +1,18 @@
 var tape = require('tape')
 var stream = require('../')
+var bufferFrom = require('buffer-from')
 
 tape('pipe', function (t) {
   t.plan(7 + 2)
 
   var datas = [
-    Buffer('a'),
-    Buffer('b'),
-    Buffer('c'),
-    Buffer('d'),
-    Buffer('e'),
-    Buffer('f'),
-    Buffer('g')
+    bufferFrom('a'),
+    bufferFrom('b'),
+    bufferFrom('c'),
+    bufferFrom('d'),
+    bufferFrom('e'),
+    bufferFrom('f'),
+    bufferFrom('g')
   ]
 
   var i = 0
@@ -43,13 +44,13 @@ tape('pipe', function (t) {
 
 tape('pipe with callback', function (t) {
   var datas = [
-    Buffer('a'),
-    Buffer('b'),
-    Buffer('c'),
-    Buffer('d'),
-    Buffer('e'),
-    Buffer('f'),
-    Buffer('g')
+    bufferFrom('a'),
+    bufferFrom('b'),
+    bufferFrom('c'),
+    bufferFrom('d'),
+    bufferFrom('e'),
+    bufferFrom('f'),
+    bufferFrom('g')
   ]
 
   var i = 0
@@ -78,23 +79,23 @@ tape('pipe with transform', function (t) {
   t.plan(7)
 
   var datas = [
-    Buffer('a'),
-    Buffer('b'),
-    Buffer('c'),
-    Buffer('d'),
-    Buffer('e'),
-    Buffer('f'),
-    Buffer('g')
+    bufferFrom('a'),
+    bufferFrom('b'),
+    bufferFrom('c'),
+    bufferFrom('d'),
+    bufferFrom('e'),
+    bufferFrom('f'),
+    bufferFrom('g')
   ]
 
   var expected = [
-    Buffer('A'),
-    Buffer('B'),
-    Buffer('C'),
-    Buffer('D'),
-    Buffer('E'),
-    Buffer('F'),
-    Buffer('G')
+    bufferFrom('A'),
+    bufferFrom('B'),
+    bufferFrom('C'),
+    bufferFrom('D'),
+    bufferFrom('E'),
+    bufferFrom('F'),
+    bufferFrom('G')
   ]
 
   var i = 0
@@ -108,7 +109,7 @@ tape('pipe with transform', function (t) {
 
   var ts = stream.Transform({
     transform: function (data, cb) {
-      cb(null, Buffer(data.toString().toUpperCase()))
+      cb(null, bufferFrom(data.toString().toUpperCase()))
     }
   })
 
@@ -124,23 +125,23 @@ tape('pipe with transform', function (t) {
 
 tape('pipe with transform and callback', function (t) {
   var datas = [
-    Buffer('a'),
-    Buffer('b'),
-    Buffer('c'),
-    Buffer('d'),
-    Buffer('e'),
-    Buffer('f'),
-    Buffer('g')
+    bufferFrom('a'),
+    bufferFrom('b'),
+    bufferFrom('c'),
+    bufferFrom('d'),
+    bufferFrom('e'),
+    bufferFrom('f'),
+    bufferFrom('g')
   ]
 
   var expected = [
-    Buffer('A'),
-    Buffer('B'),
-    Buffer('C'),
-    Buffer('D'),
-    Buffer('E'),
-    Buffer('F'),
-    Buffer('G')
+    bufferFrom('A'),
+    bufferFrom('B'),
+    bufferFrom('C'),
+    bufferFrom('D'),
+    bufferFrom('E'),
+    bufferFrom('F'),
+    bufferFrom('G')
   ]
 
   var i = 0
@@ -154,7 +155,7 @@ tape('pipe with transform and callback', function (t) {
 
   var ts = stream.Transform({
     transform: function (data, cb) {
-      cb(null, Buffer(data.toString().toUpperCase()))
+      cb(null, bufferFrom(data.toString().toUpperCase()))
     }
   })
 
@@ -189,7 +190,7 @@ tape('pipe with callback and destroy rs', function (t) {
 tape('pipe with callback and destroy ws', function (t) {
   var rs = stream.Readable({
     read: function (cb) {
-      cb(null, Buffer('hello'))
+      cb(null, bufferFrom('hello'))
     }
   })
 

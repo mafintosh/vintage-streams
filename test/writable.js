@@ -1,16 +1,17 @@
 var tape = require('tape')
 var streams = require('../')
+var bufferFrom = require('buffer-from')
 
 tape('write', function (t) {
   var ws = streams.Writable({
     write: function (data, cb) {
-      t.same(data, Buffer('hello'), 'wrote hello')
+      t.same(data, bufferFrom('hello'), 'wrote hello')
       t.end()
       cb()
     }
   })
 
-  ws.write(Buffer('hello'))
+  ws.write(bufferFrom('hello'))
 })
 
 tape('write multiple times', function (t) {
@@ -18,16 +19,16 @@ tape('write multiple times', function (t) {
 
   var ws = streams.Writable({
     write: function (data, cb) {
-      t.same(data, Buffer('hello'), 'wrote hello')
+      t.same(data, bufferFrom('hello'), 'wrote hello')
       cb()
     }
   })
 
-  ws.write(Buffer('hello'))
-  ws.write(Buffer('hello'))
-  ws.write(Buffer('hello'))
-  ws.write(Buffer('hello'))
-  ws.write(Buffer('hello'))
+  ws.write(bufferFrom('hello'))
+  ws.write(bufferFrom('hello'))
+  ws.write(bufferFrom('hello'))
+  ws.write(bufferFrom('hello'))
+  ws.write(bufferFrom('hello'))
 })
 
 tape('write one at a time', function (t) {
@@ -38,7 +39,7 @@ tape('write one at a time', function (t) {
     write: function (data, cb) {
       t.ok(!writing, 'not writing')
       writing = true
-      t.same(data, Buffer('hello'), 'wrote hello')
+      t.same(data, bufferFrom('hello'), 'wrote hello')
       setTimeout(function () {
         writing = false
         cb()
@@ -46,11 +47,11 @@ tape('write one at a time', function (t) {
     }
   })
 
-  ws.write(Buffer('hello'))
-  ws.write(Buffer('hello'))
-  ws.write(Buffer('hello'))
-  ws.write(Buffer('hello'))
-  ws.write(Buffer('hello'))
+  ws.write(bufferFrom('hello'))
+  ws.write(bufferFrom('hello'))
+  ws.write(bufferFrom('hello'))
+  ws.write(bufferFrom('hello'))
+  ws.write(bufferFrom('hello'))
 })
 
 tape('emits finish', function (t) {
@@ -59,7 +60,7 @@ tape('emits finish', function (t) {
     write: function (data, cb) {
       t.ok(!writing, 'not writing')
       writing = true
-      t.same(data, Buffer('hello'), 'wrote hello')
+      t.same(data, bufferFrom('hello'), 'wrote hello')
       setTimeout(function () {
         writing = false
         cb()
@@ -72,8 +73,8 @@ tape('emits finish', function (t) {
     t.end()
   })
 
-  ws.write(Buffer('hello'))
-  ws.write(Buffer('hello'))
+  ws.write(bufferFrom('hello'))
+  ws.write(bufferFrom('hello'))
   ws.end()
 })
 
@@ -81,7 +82,7 @@ tape('emits close after finish', function (t) {
   var finished = false
   var ws = streams.Writable({
     write: function (data, cb) {
-      t.same(data, Buffer('hello'), 'wrote hello')
+      t.same(data, bufferFrom('hello'), 'wrote hello')
       cb()
     }
   })
@@ -96,7 +97,7 @@ tape('emits close after finish', function (t) {
     t.end()
   })
 
-  ws.write(Buffer('hello'))
-  ws.write(Buffer('hello'))
+  ws.write(bufferFrom('hello'))
+  ws.write(bufferFrom('hello'))
   ws.end()
 })

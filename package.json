@@ -4,6 +4,7 @@
   "description": "Userland streams implementation",
   "main": "index.js",
   "dependencies": {
+    "buffer-from": "^1.0.0",
     "inherits": "^2.0.1"
   },
   "devDependencies": {
