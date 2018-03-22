@@ -1,5 +1,6 @@
 var events = require('events')
 var inherits = require('inherits')
+var bufferFrom = require('buffer-from')
 
 module.exports = Writable
 
@@ -98,7 +99,7 @@ Writable.prototype.uncork = function () {
 
 Writable.prototype.write = function (data) {
   var state = this._writableState
-  return writeMaybe(this, state, (!state.objectMode && typeof data === 'string') ? Buffer(data) : data)
+  return writeMaybe(this, state, (!state.objectMode && typeof data === 'string') ? bufferFrom(data) : data)
 }
 
 Writable.prototype.end = function (data) {
